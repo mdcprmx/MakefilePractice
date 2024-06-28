@@ -12,18 +12,34 @@ s21_project.a: $(OBJ)
 	ar rc $@ $(OBJ)
 
 
-
-
-
 # ________________________________________________
 #	So, what this target at line 8 (%.o: %.c] does?
 #    $@: The filename representing the target.
 #    $%: The filename element of an archive member specification.
 #    $<: The filename of the first prerequisite.
-#    $?: The names of all prerequisites that are newer than the target, separated by spaces.
-#    $^: The filenames of all the prerequisites, separated by spaces. This list has duplicate filenames removed since for most uses, such as compiling, copying, etc., duplicates are not wanted.
-#    $+: Similar to $^, this is the names of all the prerequisites separated by spaces, except that $+ includes duplicates. This variable was created for specific situations such as arguments to linkers where duplicate values have meaning.
-#    $*: The stem of the target filename. A stem is typically a filename without its suffix. Its use outside of pattern rules is discouraged.
+# ________________________________________________
+
+
+
+# ________________________________________________
+# btw, this code is above is basically the same as this one below
+
+FLAGS = -Wall -Wextra -Werror
+
+OBJECT = s21_aaaa.o s21_bbbb.o s21_dance.o
+
+all2: clean s21_piroject.a
+
+compile: 
+	gcc $(FLAGS) -c s21_aaaa.c -o s21_aaaa.o 
+	gcc $(FLAGS) -c s21_bbbb.c -o s21_bbbb.o 
+	gcc $(FLAGS) -c s21_dance.c -o s21_dance.o 
+
+s21_piroject.a: compile
+	ar rc s21_piroject.a $(OBJECT)
+
+
+
 
 
 clean:
