@@ -1,5 +1,6 @@
 USUAL_FLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
 
+
 SRC = $(wildcard s21_*.c)
 OBJ = $(SRC:.c=.o)
 
