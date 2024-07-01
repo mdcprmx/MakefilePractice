@@ -6,6 +6,6 @@
 
 int s21_dance();
 int s21_bbbb();
-int s21_aaaa();
+char * s21_aaaa(char * string);
 
 #endif

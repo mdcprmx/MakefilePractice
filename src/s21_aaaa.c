@@ -1,12 +1,12 @@
 
 #include "s21_lib.h"
+#include <string.h>
 
-int s21_aaaa()
+char * s21_aaaa(char * string)
 {
-    printf("\naaaa file\n");
-    printf("\naaaa file\n");
-    printf("\naaaa file\n");
-    printf("\naaaa file\n");
+    char buffer[100] = "moshi moshi world";
+    strcpy (string, buffer);
 
-    return EXIT_SUCCESS;
+
+    return string;
 }
