@@ -24,6 +24,7 @@ s21_project.a: $(OBJ)
 
 # ________________________________________________
 # btw, this code above is basically the same as this one below
+#
 
 FLAGS = -Wall -Wextra -Werror
 
