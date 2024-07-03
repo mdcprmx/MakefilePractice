@@ -29,40 +29,47 @@ FLAGS = -Wall -Wextra -Werror
 
 OBJECT = s21_aaaa.o s21_bbbb.o s21_dance.o
 
-all2: clean s21_piroject.a
+all2: clean cupcake.a
 
-compile: 
+compile:
 	gcc $(FLAGS) -c s21_aaaa.c -o s21_aaaa.o 
 	gcc $(FLAGS) -c s21_bbbb.c -o s21_bbbb.o 
 	gcc $(FLAGS) -c s21_dance.c -o s21_dance.o 
 
-s21_piroject.a: compile
+cupcake.a: compile
 	ar rc s21_piroject.a $(OBJECT)
-	
-clean:
-	rm -rf *.o \ rm -rf ./test_dir/*.out
-	rm -rf *.a
+
+
+
+
 
 
 #######################
 # Gcov report pratice #
 
-LIB_FLAGS = -lcheck -lpthread -pthread -lm -lrt -lsubunit -lgcov
-GCOV_FLAGS = -fprofile-arcs -ftest-coverage
+LIB_FLAGS = -lcheck -lpthread -lm -lrt -lsubunit -lgcov -pthread
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage #these two flags are the same as "--coverage" flag
 SRC_TEST = ./test_dir/utests_suites.c ./test_dir/utests_main.c 
 
-
 gcov_report: gclean 
-	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) $(GCOV_FLAGS) -o ./test_dir/utests.out
+	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) $(GCOV_FLAGS) -g -o ./test_dir/utests.out
 	./test_dir/utests.out
-	lcov -c -d ./test_dir/ -o ./test_dir/report.info
+	lcov --capture --directory ./test_dir/ -o ./test_dir/report.info
 	genhtml ./test_dir/report.info --frames --output-directory report_html
-	open ./report_html/index.html
+	open ./report_html/src/index.html
 
 test: gclean
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) -o ./test_dir/utests.out
 	./test_dir/utests.out
 
+
+
+#################
+#      etc      #
+
+clean:
+	rm -rf *.o \ rm -rf ./test_dir/*.out
+	rm -rf *.a
 
 gclean: clean
 	rm -rf ./test_dir/*.gcno
