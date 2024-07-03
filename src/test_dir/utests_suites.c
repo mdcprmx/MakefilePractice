@@ -1,12 +1,14 @@
 #include "utests_lib.h"
 
 START_TEST(aaaa_test_01) {
-  char *string;
 
-  char expected_result[100] = "moshi moshi world";
-  char actual_result[100] = s21_aaaa(string);
+  int num1 = 2;
+  int num2 = 5;
 
-  ck_assert_str_eq(expected_result, actual_result);
+  int expected_result = 7;
+  int actual_result = s21_aaaa(num1, num2);
+
+  ck_assert_int_eq(expected_result, actual_result);
 
 }
 END_TEST

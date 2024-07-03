@@ -40,7 +40,7 @@ s21_piroject.a: compile
 	ar rc s21_piroject.a $(OBJECT)
 	
 clean:
-	rm -rf *.o
+	rm -rf *.o \ rm -rf ./test_dir/*.out
 	rm -rf *.a
 
 
@@ -52,21 +52,20 @@ GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 SRC_TEST = ./test_dir/utests_suites.c ./test_dir/utests_main.c 
 
 
-gcov_report: gcov_clean 
+gcov_report: gclean 
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) $(GCOV_FLAGS) -o ./test_dir/utests.out
 	./test_dir/utests.out
 	lcov -c -d ./test_dir/ -o ./test_dir/report.info
 	genhtml ./test_dir/report.info --frames --output-directory report_html
 	open ./report_html/index.html
 
-test: gcov_clean
+test: gclean
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) -o ./test_dir/utests.out
 	./test_dir/utests.out
 
 
-gcov_clean:
-	rm -rf *.o
-	rm -rf *.a
+gclean: clean
 	rm -rf ./test_dir/*.gcno
 	rm -rf ./test_dir/*.gcda
+	rm -rf ./test_dir/*.info
 	rm -rf report_html

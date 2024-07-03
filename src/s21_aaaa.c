@@ -2,11 +2,11 @@
 #include "s21_lib.h"
 #include <string.h>
 
-char * s21_aaaa(char * string)
+int s21_aaaa(int a, int b)
 {
-    char buffer[100] = "moshi moshi world";
-    strcpy (string, buffer);
+    int result = 0;
 
+    result = a + b;
 
-    return string;
+    return result;
 }
