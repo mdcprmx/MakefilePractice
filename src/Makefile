@@ -63,6 +63,17 @@ test: gclean
 	./test_dir/utests.out
 
 
+#######################
+# git add/commit/push #
+
+gs:
+	git status
+
+gacp:
+	git add -A
+	git commit -m "$(msg)"
+	git push 
+
 
 #################
 #      etc      #
