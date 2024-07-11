@@ -41,9 +41,6 @@ cupcake.a: compile
 	ar rc s21_piroject.a $(OBJECT)
 
 
-
-## testing
-
 #######################
 # Gcov report pratice #
 
@@ -61,18 +58,6 @@ gcov_report: gclean
 test: gclean
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) -o ./test_dir/utests.out
 	./test_dir/utests.out
-
-
-#######################
-# git add/commit/push #
-
-gs:
-	git status
-
-gacp:
-	git add -A
-	git commit -m "$(msg)"
-	git push 
 
 
 #################
