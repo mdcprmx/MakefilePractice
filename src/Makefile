@@ -44,7 +44,6 @@ cupcake.a: compile
 
 
 
-
 #######################
 # Gcov report pratice #
 
