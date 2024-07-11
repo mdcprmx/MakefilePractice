@@ -14,7 +14,6 @@ s21_project.a: $(OBJ)
 
 
 
-
 # ________________________________________________
 #	So, what this target at line 8 (%.o: %.c] does?
 #    $@: The filename representing the target.
