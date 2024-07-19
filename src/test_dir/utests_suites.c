@@ -9,10 +9,8 @@ START_TEST(aaaa_test_01) {
   int actual_result = s21_aaaa(num1, num2);
 
   ck_assert_int_eq(expected_result, actual_result);
-
 }
 END_TEST
-
 
 START_TEST(aaaa_test_02) {
 
@@ -23,10 +21,8 @@ START_TEST(aaaa_test_02) {
   int actual_result = s21_aaaa(num1, num2);
 
   ck_assert_int_eq(expected_result, actual_result);
-
 }
 END_TEST
-
 
 START_TEST(bbbb_test_01) {
 
@@ -36,7 +32,6 @@ START_TEST(bbbb_test_01) {
   ck_assert_int_eq(expected_result, actual_result);
 }
 END_TEST
-
 
 Suite *s21_aaaa_full_test() {
   TCase *tcase = tcase_create("MF_Practice tcase");

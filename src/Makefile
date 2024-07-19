@@ -15,7 +15,7 @@ s21_project.a: $(OBJ)
 
 
 # ________________________________________________
-#	So, what this target at line 8 (%.o: %.c] does?
+#	So, what this target at line 8 - [%.o: %.c] does?
 #    $@: The filename representing the target.
 #    $%: The filename element of an archive member specification.
 #    $<: The filename of the first prerequisite.
@@ -47,14 +47,14 @@ LIB_FLAGS = -lcheck -lpthread -lm -lrt -lsubunit -lgcov -pthread
 GCOV_FLAGS = -fprofile-arcs -ftest-coverage #these two flags are the same as "--coverage" flag
 SRC_TEST = ./test_dir/utests_suites.c ./test_dir/utests_main.c 
 
-gcov_report: gclean 
+gcov_report: clean 
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) $(GCOV_FLAGS) -g -o ./test_dir/utests.out
 	./test_dir/utests.out
 	lcov --capture --directory ./test_dir/ -o ./test_dir/report.info
 	genhtml ./test_dir/report.info --frames --output-directory report_html
 	open ./report_html/src/index.html
 
-test: gclean
+test: clean
 	gcc $(USUAL_FLAGS) $(SRC) $(SRC_TEST) $(LIB_FLAGS) -o ./test_dir/utests.out
 	./test_dir/utests.out
 
@@ -65,8 +65,6 @@ test: gclean
 clean:
 	rm -rf *.o \ rm -rf ./test_dir/*.out
 	rm -rf *.a
-
-gclean: clean
 	rm -rf ./test_dir/*.gcno
 	rm -rf ./test_dir/*.gcda
 	rm -rf ./test_dir/*.info
